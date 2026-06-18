@@ -15,13 +15,29 @@ public class Main {
             System.out.println("5. Delete Player ");
             System.out.println("6. Exit ");
             int choice = scanner.nextInt();
+            scanner.nextLine();
 
             switch (choice) {
                 case 1: 
-                   // option 1 placeholder
+                   System.out.println("Enter player name: ");
+                   String name = scanner.nextLine();
+                   System.out.println("Enter player team: ");
+                   String team = scanner.nextLine();
+                   System.out.println("Enter player batting average: ");
+                   double battingAverage = Double.parseDouble(scanner.nextLine());
+                   System.out.println("Enter player home runs: ");
+                   int homeRuns = Integer.parseInt(scanner.nextLine());
+                   Player newPlayer = new Player(name, team, battingAverage, homeRuns);
+                   players.add(newPlayer);
                    break;
                 case 2:
-                   // option 2 placeholder
+                   for (Player p : players) {
+                     System.out.print(p.getName() + ", ");
+                     System.out.print(p.getTeam() + ", ");
+                     System.out.print(p.getBattingAverage() + ", ");
+                     System.out.print(p.getHomeRuns());
+                     System.out.println();
+                   }
                    break;
                 case 3: 
                    // option 3 placeholder

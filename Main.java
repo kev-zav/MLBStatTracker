@@ -40,13 +40,38 @@ public class Main {
                    }
                    break;
                 case 3: 
-                   // option 3 placeholder
+                   System.out.println("Enter a name to search: ");
+                   String searchName = scanner.nextLine();
+                   for (Player p : players) {
+                     if (p.getName().equals(searchName)) {
+                        System.out.println(p.getName() + ", ");
+                        System.out.print(p.getTeam() + ", ");
+                        System.out.print(p.getBattingAverage() + ", ");
+                        System.out.print(p.getHomeRuns());
+                        System.out.println();
+                        break;
+                     }
+                   }
                    break;
                 case 4:
-                    // option 4 placeholder
+                   players.sort((p1, p2) -> p2.getHomeRuns() - p1.getHomeRuns());
+                   for (Player p : players) {
+                     System.out.print(p.getName() + ", ");
+                     System.out.print(p.getTeam() + ", ");
+                     System.out.print(p.getBattingAverage() + ", ");
+                     System.out.print(p.getHomeRuns());
+                     System.out.println();
+                   }
                    break;
                 case 5: 
-                   // option 5 placeholder
+                   System.out.println("Enter a player to delete: ");
+                   String deleteName = scanner.nextLine();
+                   for (Player p : players) {
+                     if (p.getName().equals(deleteName)) {
+                        players.remove(p);
+                        break;
+                     }
+                   }
                    break;
                 case 6:
                    running = false;

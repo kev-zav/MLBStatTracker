@@ -19,17 +19,21 @@ public class Main {
 
             switch (choice) {
                 case 1: 
-                   System.out.println("Enter player name: ");
-                   String name = scanner.nextLine();
-                   System.out.println("Enter player team: ");
-                   String team = scanner.nextLine();
-                   System.out.println("Enter player batting average: ");
-                   double battingAverage = Double.parseDouble(scanner.nextLine());
-                   System.out.println("Enter player home runs: ");
-                   int homeRuns = Integer.parseInt(scanner.nextLine());
-                   Player newPlayer = new Player(name, team, battingAverage, homeRuns);
-                   players.add(newPlayer);
-                   break;
+                  try {
+                     System.out.println("Enter player name: ");
+                     String name = scanner.nextLine();
+                     System.out.println("Enter player team: ");
+                     String team = scanner.nextLine();
+                     System.out.println("Enter player batting average: ");
+                     double battingAverage = Double.parseDouble(scanner.nextLine());
+                     System.out.println("Enter player home runs: ");
+                     int homeRuns = Integer.parseInt(scanner.nextLine());
+                     Player newPlayer = new Player(name, team, battingAverage, homeRuns);
+                     players.add(newPlayer);
+                  } catch (NumberFormatException e) {
+                     System.out.println("Invalid input, player not added");
+                  }
+                  break;
                 case 2:
                    for (Player p : players) {
                      System.out.print(p.getName() + ", ");

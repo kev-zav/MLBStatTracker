@@ -1,10 +1,32 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.File;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Player> players = new ArrayList<>();
+        File file = new File("players.txt");
+        if (file.exists()) {
+         try {
+            Scanner fileScanner = new Scanner(file);
+            while (fileScanner.hasNextLine()) {
+               String line = fileScanner.nextLine();
+               String[] parts = line.split(",");
+               String name = parts[0];
+               String team = parts[1];
+               double battingAverage = Double.parseDouble(parts[2]);
+               int homeRuns = Integer.parseInt(parts[3]);
+               Player loadedPlayer = new Player(name, team, battingAverage, homeRuns);
+               players.add(loadedPlayer);
+            }
+            fileScanner.close();
+         } catch (Exception e) {
+            System.out.println("Error loading file");
+         }
+        }
 
         boolean running = true;
         while (running) {
@@ -78,10 +100,18 @@ public class Main {
                    }
                    break;
                 case 6:
+                   try {
+                     FileWriter writer = new FileWriter("players.txt");
+                     for (Player p : players) {
+                        writer.write(p.getName() + "," + p.getTeam() + "," + p.getBattingAverage() + "," + p.getHomeRuns() + "\n");
+                     }
+                     writer.close();
+                  } catch (IOException e) {
+                     System.out.println("Error saving file.");
+                  }
                    running = false;
                    break;
                 default:
-                    System.out.println("Invalid choice");
             }
         }
     }

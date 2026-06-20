@@ -1,0 +1,4 @@
+Brian Rea,Chicago White Sox,0.254,23
+Kevin Zavala,Chicago Cubs,0.321,25
+Steph Curry,Golden State Warriors,0.287,12
+Lebron James,Los Angeles Lakers,0.273,43
